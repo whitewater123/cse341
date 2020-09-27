@@ -2,6 +2,9 @@
 <html>
 <head>
   <% include ../includes/header.ejs %>
+  <style>
+    h3 {color: rgb(173, 173, 173);}
+  </style>
 </head>
 
 <body>
@@ -13,11 +16,12 @@
   </div>
 
     <div class="container">
-      <h1><%= title %></h1>
-      <h2>Title:</h2>
+      <h3>Title:</h3>
       <%= bookTitle %>
-      <h2>Summary:</h2>
+      <h3>Summary:</h3>
       <%= bookSummary %>
+      <h3>Released:</h3>
+      <%= releaseDate %>
     </div>
   </div>
 
