@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+
+  </div>
+
+  <% if (addThis){
+    var broke = false;
+    for (i = 0; i < users.length; i++)
+      {
+        if (users[i] === addThis) { %>
+        ERROR: There is already a user named <%= addThis %> in the system.
+        <% broke = true;
+        break;
+        }
+        } 
+        if (!broke) {
+          users.push(addThis);
+        }
+  } %>
+  
+  <% if (removeThis){
+    var broke = false;
+     for (i = 0; i < users.length; i++)
+      {
+        if (users[i] === removeThis) {
+        users.splice(i, 1);
+        broke = true;
+        break;
+        }
+        } 
+        if (!broke) { %>
+        ERROR: There is no user named <%= removeThis %> in the system.
+  <% }
+         } %>
+
+  <h2>Users: </h2>
+  <% for (i = 0; i < users.length; i++)
+    { %>
+      <%= users[i] %>
+      <% } %>
+
+      <br>
+      <br>
+      <form action="/ta02/editNames" method="POST">
+        <button type="submit">Edit Names</button>
+    </form>
+</div>
+  
+
+</body>
+</html>
