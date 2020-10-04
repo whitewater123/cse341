@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/188.jpg",
+        "price": 10.99,
+        "name": "Bike",
+        "description": "Perfect for riding."
+      },
+      {
+        "id": 2,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/174.jpg",
+        "price": 10.99,
+        "name": "Private Lake",
+        "description": "Lake house not included."
+      },
+      {
+        "id": 3,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/200.jpg",
+        "price": 10.99,
+        "name": "An Entire City",
+        "description": "No, this is not a scam. We are actually selling a city for 10.99!"
+      }
+]

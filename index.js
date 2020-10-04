@@ -22,12 +22,15 @@ const app = express();
 //prove activities
 const prove01Routes = require('./routes/prove01'); 
 const pr02Routes = require('./routes/pr02'); 
+const pr03Routes = require('./routes/proveRoutes/pr03RT'); 
 
 //team activities
 const ta01Routes = require('./routes/ta01');
 const ta02Routes = require('./routes/ta02');
-const ta03Routes = require('./routes/ta03'); 
+const ta03Routes = require('./routes/ta03/ta03'); 
 const ta04Routes = require('./routes/ta04');
+
+const classRoutes = require('./routes/classRoutes/w03/routes');
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -41,10 +44,12 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use(bodyParser({extended: false})) // For parsing the body of a POST
    .use('/prove01', prove01Routes)
    .use('/pr02', pr02Routes)
+   .use('/pr03', pr03Routes)
    .use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
    .use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)
+   .use('/w03', classRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
