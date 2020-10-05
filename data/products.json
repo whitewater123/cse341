@@ -9,15 +9,15 @@
       {
         "id": 2,
         "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/174.jpg",
-        "price": 10.99,
+        "price": 999.99,
         "name": "Smartphone Collection",
         "description": "Daily deal: Free tablet included!"
       },
       {
         "id": 3,
         "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/200.jpg",
-        "price": 10.99,
+        "price": 2999.99,
         "name": "3D Printer",
-        "description": "Whether you're prototyping a product or bringing your 3D art to the real world, 3D printing can't be beat!"
+        "description": "The best way to prototype designs."
       }
 ]
