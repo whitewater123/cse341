@@ -1,23 +1,23 @@
 [
     {
         "id": 1,
-        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/188.jpg",
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/198.jpg",
         "price": 10.99,
-        "name": "Bike",
-        "description": "Perfect for riding."
+        "name": "Ztella USB charging kit",
+        "description": "The number one way to charge your phone!"
       },
       {
         "id": 2,
         "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/174.jpg",
         "price": 10.99,
-        "name": "Private Lake",
-        "description": "Lake house not included."
+        "name": "Smartphone Collection",
+        "description": "Daily deal: Free tablet included!"
       },
       {
         "id": 3,
         "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/200.jpg",
         "price": 10.99,
-        "name": "An Entire City",
-        "description": "No, this is not a scam. We are actually selling a city for 10.99!"
+        "name": "3D Printer",
+        "description": "Whether you're prototyping a product or bringing your 3D art to the real world, 3D printing can't be beat!"
       }
 ]
