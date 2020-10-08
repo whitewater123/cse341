@@ -14,6 +14,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors')
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 
 const app = express();
@@ -32,6 +33,22 @@ const ta04Routes = require('./routes/ta04');
 
 const classRoutes = require('./routes/classRoutes/w03/routes');
 
+const mongoose = require('mongoose');
+const corsOptions = {
+origin: "https://cse341-derek-washburn.herokuapp.com/",
+optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://B1uelight:B1uelight@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
@@ -59,3 +76,15 @@ app.use(express.static(path.join(__dirname, 'public')))
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
    .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+   mongoose
+  .connect(
+    MONGODB_URL, options
+  )
+  .then(result => {
+    ... // This should be your user handling code implement following the course videos
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
