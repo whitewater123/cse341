@@ -40,6 +40,8 @@ optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
+//...
+
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
@@ -48,7 +50,7 @@ const options = {
   family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://B1uelight:B1uelight@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://bluelight:cangetin@cluster0.wuf5i.mongodb.net/test?retryWrites=true&w=majority";
 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
@@ -75,7 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')))
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
-   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+   //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
    mongoose
   .connect(
