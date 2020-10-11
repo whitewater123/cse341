@@ -33,6 +33,9 @@ const ta04Routes = require('./routes/ta04');
 
 const classRoutes = require('./routes/classRoutes/w03/routes');
 
+const adminRoutes = require('./routes/storeRoutes/admin')
+const shopRoutes = require('./routes/storeRoutes/shop')
+
 const mongoose = require('mongoose');
 const corsOptions = {
 origin: "https://cse341-derek-washburn.herokuapp.com/",
@@ -61,6 +64,11 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'})) // For handlebars
    //.set('view engine', 'hbs')
    .use(bodyParser({extended: false})) // For parsing the body of a POST
+   //.use(bodyParser.urlencoded({extended: true})) // For parsing the body of a POST
+   //.use(bodyParser.json({extended: true}))
+
+   
+
    .use('/prove01', prove01Routes)
    .use('/pr02', pr02Routes)
    .use('/pr03', pr03Routes)
@@ -69,6 +77,8 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)
    .use('/w03', classRoutes)
+   .use('/admin', adminRoutes)
+   .use('/products', shopRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});

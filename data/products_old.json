@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/198.jpg",
+        "price": 10.99,
+        "name": "Ztella USB charging kit",
+        "description": "The number one way to charge your phone!"
+      },
+      {
+        "id": 2,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/174.jpg",
+        "price": 999.99,
+        "name": "Smartphone Collection",
+        "description": "Daily deal: Free tablet included!"
+      },
+      {
+        "id": 3,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/200.jpg",
+        "price": 2999.99,
+        "name": "3D Printer",
+        "description": "The best way to prototype designs."
+      },
+      {
+        "id": 1,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/198.jpg",
+        "price": 10.99,
+        "name": "Ztella USB charging kit",
+        "description": "The number one way to charge your phone!"
+      },
+      {
+        "id": 2,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/174.jpg",
+        "price": 999.99,
+        "name": "Smartphone Collection",
+        "description": "Daily deal: Free tablet included!"
+      },
+      {
+        "id": 3,
+        "imageUrl": "https://byui-cse.github.io/cse341-course/lesson03/images/200.jpg",
+        "price": 2999.99,
+        "name": "3D Printer",
+        "description": "The best way to prototype designs."
+      }
+]
