@@ -11,11 +11,7 @@
                         <li class="cart__item">
                             <h1><%= p.productId.title %></h1>
                             <h2>Quantity: <%= p.quantity %></h2>
-<<<<<<< HEAD
                             <form action="/products/cart-delete-item" method="POST">
-=======
-                            <form action="/cart-delete-item" method="POST">
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
                                 <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                 
                                 <button class="btn danger" type="submit">Delete</button>
@@ -25,11 +21,7 @@
                 </ul>
                 <hr>
                 <div class="centered">
-<<<<<<< HEAD
                     <form action="/products/create-order" method="POST">
-=======
-                    <form action="/create-order" method="POST">
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
                         
                         <button type="submit" class="btn">Order Now!</button>
                     </form>

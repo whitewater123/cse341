@@ -35,10 +35,7 @@ const classRoutes = require('./routes/classRoutes/w03/routes');
 
 const adminRoutes = require('./routes/storeRoutes/admin')
 const shopRoutes = require('./routes/storeRoutes/shop')
-<<<<<<< HEAD
 const User = require('./models/storeModels/user')
-=======
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
 
 const mongoose = require('mongoose');
 const corsOptions = {
@@ -71,7 +68,6 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.use(bodyParser.urlencoded({extended: true})) // For parsing the body of a POST
    //.use(bodyParser.json({extended: true}))
 
-<<<<<<< HEAD
    .use((req, res, next) => {
     User.findById('5f86187ee66bf166f035ebad')
     .then(user => {
@@ -82,9 +78,6 @@ app.use(express.static(path.join(__dirname, 'public')))
     //res.locals.csrfToken = req.csrfToken();
     //next();
   })
-=======
-   
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
 
    .use('/prove01', prove01Routes)
    .use('/pr02', pr02Routes)

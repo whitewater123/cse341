@@ -28,11 +28,7 @@
                 <input type="hidden" value="<%= product._id %>" name="productId">
             <% } %>
 
-<<<<<<< HEAD
             
-=======
-
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
             <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
         </form>
     </main>

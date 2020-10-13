@@ -3,11 +3,7 @@
     </head>
 
     <body>
-<<<<<<< HEAD
         <%- include('../includes/navigation.ejs') %>
-=======
-        <%- ../include('includes/navigation.ejs') %>
->>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
         <main>
             <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
