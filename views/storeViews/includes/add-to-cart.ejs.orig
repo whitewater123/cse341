@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <form action="/products/cart" method="post">
+=======
+<form action="/cart" method="post">
+>>>>>>> e1e5e0c5f5eb14e4c091a93ac25d98a3eff47ed4
     
     <button class="btn" type="submit">Add to Cart</button>
     <input type="hidden" name="productId" value="<%= product._id %>">
