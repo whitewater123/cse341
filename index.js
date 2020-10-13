@@ -33,6 +33,10 @@ const ta04Routes = require('./routes/ta04');
 
 const classRoutes = require('./routes/classRoutes/w03/routes');
 
+const adminRoutes = require('./routes/storeRoutes/admin')
+const shopRoutes = require('./routes/storeRoutes/shop')
+const User = require('./models/storeModels/user')
+
 const mongoose = require('mongoose');
 const corsOptions = {
 origin: "https://cse341-derek-washburn.herokuapp.com/",
@@ -61,6 +65,20 @@ app.use(express.static(path.join(__dirname, 'public')))
    //.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'})) // For handlebars
    //.set('view engine', 'hbs')
    .use(bodyParser({extended: false})) // For parsing the body of a POST
+   //.use(bodyParser.urlencoded({extended: true})) // For parsing the body of a POST
+   //.use(bodyParser.json({extended: true}))
+
+   .use((req, res, next) => {
+    User.findById('5f86187ee66bf166f035ebad')
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    //res.locals.isAuthenticated = req.session.isLoggedIn;
+    //res.locals.csrfToken = req.csrfToken();
+    //next();
+  })
+
    .use('/prove01', prove01Routes)
    .use('/pr02', pr02Routes)
    .use('/pr03', pr03Routes)
@@ -69,6 +87,8 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)
    .use('/w03', classRoutes)
+   .use('/admin', adminRoutes)
+   .use('/products', shopRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
@@ -85,6 +105,16 @@ app.use(express.static(path.join(__dirname, 'public')))
   )
   .then(result => {
     //... // This should be your user handling code implement following the course videos
+    User.findOne().then(user => {
+      if(!user){
+        new User({
+          email: "derekwashburn@hotmail.com",
+          password: "1234",
+          cart: [],
+        })
+        .save();
+      }
+    })
     app.listen(PORT);
   })
   .catch(err => {
