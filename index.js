@@ -38,6 +38,9 @@ const shopRoutes = require('./routes/storeRoutes/shop')
 const User = require('./models/storeModels/user')
 
 const mongoose = require('mongoose');
+
+const session = require('express-session');
+
 const corsOptions = {
 origin: "https://cse341-derek-washburn.herokuapp.com/",
 optionsSuccessStatus: 200
@@ -98,6 +101,8 @@ app.use(express.static(path.join(__dirname, 'public')))
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
    })
    //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+   .use(session({ secret: 'l-is-real', resave: false, saveUninitialized: false }))
 
    mongoose
   .connect(
