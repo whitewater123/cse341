@@ -34,12 +34,16 @@ const ta04Routes = require('./routes/ta04');
 const classRoutes = require('./routes/classRoutes/w03/routes');
 
 const adminRoutes = require('./routes/storeRoutes/admin')
+const authRoutes = require('./routes/storeRoutes/auth')
 const shopRoutes = require('./routes/storeRoutes/shop')
 const User = require('./models/storeModels/user')
 
 const mongoose = require('mongoose');
 
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+const flash = require('flash');
 
 const corsOptions = {
 origin: "https://cse341-derek-washburn.herokuapp.com/",
@@ -58,6 +62,12 @@ const options = {
 };
 
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://bluelight:cangetin@cluster0.wuf5i.mongodb.net/test?retryWrites=true&w=majority";
+
+const store = new MongoDBStore({
+  uri: MONGODB_URL,
+  collection: 'sessions'
+});
+const csrfProtection = csrf();
 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
@@ -80,6 +90,19 @@ app.use(express.static(path.join(__dirname, 'public')))
     //res.locals.isAuthenticated = req.session.isLoggedIn;
     //res.locals.csrfToken = req.csrfToken();
     //next();
+    
+  })
+
+  
+
+  .use(session({ secret: 'l-is-real', resave: false, saveUninitialized: false }))
+  .use(csrfProtection)
+  .use(flash())
+
+  .use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+    next();
   })
 
    .use('/prove01', prove01Routes)
@@ -91,6 +114,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/ta04', ta04Routes)
    .use('/w03', classRoutes)
    .use('/admin', adminRoutes)
+   .use('/', authRoutes)
    .use('/products', shopRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
@@ -102,7 +126,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    })
    //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-   .use(session({ secret: 'l-is-real', resave: false, saveUninitialized: false }))
+
 
    mongoose
   .connect(

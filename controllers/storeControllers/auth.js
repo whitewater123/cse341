@@ -43,17 +43,21 @@ exports.postLogin = (req, res, next) => {
         .compare(password, user.password)
         .then(doMatch => {
           if (doMatch) {
-            req.session.isLoggedIn = true; //*
+            //console.log("1");
+            req.session.isLoggedIn = true; 
             req.session.user = user;
             return req.session.save(err => {
+              //console.log("2");
               console.log(err);
               res.redirect('/');
             });
           }
+          //console.log("3");
           req.flash('error', 'Invalid email or password.');
           res.redirect('/login');
         })
         .catch(err => {
+          //console.log("4");
           console.log(err);
           res.redirect('/login');
         });
