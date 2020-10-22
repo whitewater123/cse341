@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
-
-<body>
-    <h1><%= title %></h1>
+    <% include ../includes/header.ejs %>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  
+  <body>
+    <% include ../includes/nav.ejs %>
     <form action="/prove01/p1submit" method="POST">
         Enter a phrase: <input type="text" name="m1">
         <br>

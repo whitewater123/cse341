@@ -44,6 +44,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('flash');
+const errorController = require('./controllers/storeControllers/error');
 
 const corsOptions = {
 origin: "https://cse341-derek-washburn.herokuapp.com/",
@@ -67,7 +68,7 @@ const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions'
 });
-const csrfProtection = csrf();
+//const csrfProtection = csrf();
 
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
@@ -96,13 +97,30 @@ app.use(express.static(path.join(__dirname, 'public')))
   
 
   .use(session({ secret: 'l-is-real', resave: false, saveUninitialized: false }))
-  .use(csrfProtection)
+  //CSRFHERE.use(csrfProtection)
   .use(flash())
 
   .use((req, res, next) => {
     res.locals.isAuthenticated = req.session.isLoggedIn;
-    res.locals.csrfToken = req.csrfToken();
+    //CSRFHEREres.locals.csrfToken = req.csrfToken();
     next();
+  })
+
+  .use((req, res, next) => {
+    if (!req.session.user) {
+      return next();
+    }
+    User.findById(req.session.user._id)
+    .then(user => {
+      if (!user) {
+        return next();
+      }
+      req.user = user;
+      next();
+    })
+    .catch(err => {
+      next(new Error(err));
+    });
   })
 
    .use('/prove01', prove01Routes)
@@ -116,6 +134,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/admin', adminRoutes)
    .use('/', authRoutes)
    .use('/products', shopRoutes)
+   .get('/500', errorController.get500)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my CSE341 repo', path: '/'});
@@ -123,6 +142,17 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use((req, res, next) => {
      // 404 page
      res.render('pages/404', {title: '404 - Page Not Found', path: req.url})
+   })
+
+   .use((error, req, res, next) => {
+     //res.status(error.httpStatusCode).render();
+     //res.redirect('/500');
+     res.status(500).render('storeViews/shop/500', {
+      title: 'Error Occured!',
+      path: '/500',
+      isAuthenticated: req.session.isLoggedIn
+    });
+    console.log(error);
    })
    //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
@@ -134,7 +164,7 @@ app.use(express.static(path.join(__dirname, 'public')))
   )
   .then(result => {
     //... // This should be your user handling code implement following the course videos
-    User.findOne().then(user => {
+    /*User.findOne().then(user => {
       if(!user){
         new User({
           email: "derekwashburn@hotmail.com",
@@ -143,7 +173,7 @@ app.use(express.static(path.join(__dirname, 'public')))
         })
         .save();
       }
-    })
+    })*/
     app.listen(PORT);
   })
   .catch(err => {
