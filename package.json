@@ -21,7 +21,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "flash": "^1.1.0",
-    "mongoose": "^5.10.8",
+    "mongoose": "^5.10.13",
     "nodemon": "^2.0.4",
     "pug": "^2.0.4"
   },

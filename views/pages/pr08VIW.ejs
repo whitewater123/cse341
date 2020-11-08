@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+  <%  %>
+  <style>
+    .product-container {
+      margin: auto;
+      width: 60%;
+    }
+
+    .card {
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+<% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <p>Take a look at our wares!</p>
+  </div>
+</div>
+<div class="product-container">
+  <% for (i = 0; i < data.length; i++) { %>
+    <% if(i % 3 == 0) { %>
+        <div class="product-container">
+      <% } %>
+      <div class="card">
+          <img src="<%= data[i].imageUrl %>" alt="image" class="cardImg">
+          <div class="cardBody">
+              <h4><b><%= data[i].name %></b></h4>
+              <h6><%= data[i].price %></h6>
+              <p><%= data[i].description %></p>
+          </div>
+          </div>
+          <% if(i % 3 == 2) { %>
+      </div> 
+      <% } %>
+</div>
+<% } %>
+</div>
+<section class="pagination">
+  <% if (currentPage !== 1 && previousPage !== 1) {%>
+    <a href="/pr08?page=1">1</a>
+  <% } %>
+  <% if (hasPreviousPage) {%>
+    <a href="/pr08?page=<%= previousPage %>"><%= previousPage %></a>
+  <% } %>
+  <a href="/pr08?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+  <% if (hasNextPage) {%>
+    <a href="/pr08?page=<%= nextPage %>"><%= nextPage %></a>
+  <% } %>
+  <% if (lastPage !== currentPage && nextPage !== lastPage) {%>
+    <a href="/pr08?page=<%= lastPage %>"><%= lastPage %></a>
+  <% } %>
+</section>
+
+
+</body>
+</html>
