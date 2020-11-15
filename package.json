@@ -22,6 +22,7 @@
     "express-validator": "^6.6.1",
     "flash": "^1.1.0",
     "mongoose": "^5.10.13",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.4",
     "pug": "^2.0.4"
   },

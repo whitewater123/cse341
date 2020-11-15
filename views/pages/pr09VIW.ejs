@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+  <%  %>
+  <style>
+    .product-container {
+      margin: auto;
+      width: 60%;
+    }
+
+    .card {
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+<% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <p>A list of all Pokemon!</p>
+  </div>
+</div>
+<div class="product-container">
+  <% for (i = 0; i < data.length; i++) { %>
+    <% if(i % 3 == 0) { %>
+        <div class="product-container">
+      <% } %>
+      <div class="card">
+          <div class="cardBody">
+              <h4><b><%= data[i].name %></b></h4>
+              <p><%= data[i].url %></p>
+          </div>
+          </div>
+          <% if(i % 3 == 2) { %>
+      </div> 
+      <% } %>
+</div>
+<% } %>
+</div>
+<section class="pagination">
+  <% if (hasPreviousPage) {%>
+    <a href="/pr09/prev">previous</a>
+    <% } %>
+    <% if (hasNextPage) {%>
+    <a href="/pr09/next">next</a>
+    <% } %>
+</section>
+
+
+</body>
+</html>

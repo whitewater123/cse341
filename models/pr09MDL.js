@@ -4,10 +4,10 @@ const path = require('path');
 const p = path.join(
     path.dirname(process.mainModule.filename),
     'data',
-    'products.json'
+    'https://pokeapi.co/api/v2/pokemon?offset=0&limit=10'
   );
 
-  const getProducts = cb => {
+  const getPokemon = cb => {
     fs.readFile(p, (err, fileContent) => {
       if (err) {
         cb([]);
@@ -18,12 +18,12 @@ const p = path.join(
   };
 
   module.exports = class Product {
-    constructor(id, imageUrl, description, price) {
+    constructor(id, title, imageUrl, url, price) {
       this.id = id;
       this.imageUrl = imageUrl;
       this.price = price;
       this.name = name;
-      this.description = description;
+      this.url = url;
       
     }
 
