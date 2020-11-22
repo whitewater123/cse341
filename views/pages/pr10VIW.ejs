@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+  <script src=“/js/fetch.js”></script>
+  
+  <style>
+    .product-container {
+      margin: auto;
+      width: 60%;
+    }
+
+    .card {
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+<% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <p></p>
+  </div>
+</div>
+<div class="product-container">
+  <div id="get">Get Heroes</div>
+  <div class="form-control">
+    <label for="inser">insert new item</label>
+    <input 
+        class="insert"
+        type="text" 
+        name="insert" 
+        id="insert">
+        <button class="btn" type="submit" href="/pr10/fetchAll">insert</button>
+</div>
+  
+    
+</div>
+
+
+</body>
+</html>

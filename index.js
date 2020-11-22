@@ -26,6 +26,7 @@ const pr02Routes = require('./routes/pr02');
 const pr03Routes = require('./routes/proveRoutes/pr03RT'); 
 const pr08Routes = require('./routes/proveRoutes/pr08RT');
 const pr09Routes = require('./routes/proveRoutes/pr09RT');
+const pr10Routes = require('./routes/proveRoutes/pr10RT');
 
 //team activities
 const ta01Routes = require('./routes/ta01');
@@ -134,6 +135,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/ta04', ta04Routes)
    .use('/pr08', pr08Routes)
    .use('/pr09', pr09Routes)
+   .use('/pr10', pr10Routes)
    .use('/w03', classRoutes)
    .use('/admin', adminRoutes)
    .use('/', authRoutes)
