@@ -2,7 +2,7 @@
 <html>
 <head>
   <% include ../includes/header.ejs %>
-  <script src=“/js/fetch.js”></script>
+  <script src="/js/fetch.js"></script>
   
   <style>
     .product-container {
@@ -27,19 +27,21 @@
   </div>
 </div>
 <div class="product-container">
-  <a href="/pr10/fetchAll" id="get">Get Heroes</a>
+  <ul id="get"></ul>
   <div class="form-control">
-    <label for="inser">insert new item</label>
+    <label for="insert">insert new item</label>
     <input 
         class="insert"
         type="text" 
         name="insert" 
         id="insert">
-        <button class="btn" type="submit" href="/pr10/fetchAll">insert</button>
+        <button class="btn" onclick="postRequest()" href="/pr10/fetchAll">insert</button>
 </div>
   
     
 </div>
+
+
 
 
 </body>

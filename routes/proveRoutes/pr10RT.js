@@ -20,9 +20,22 @@ const express = require('express');
     /************************************************
      * INSERT YOUR WEB ENDPOINT CODE HERE
      ************************************************/
-    function insertHero(dummyData) {
+    //function insertHero(dummyData) {
+        const avenger = req.body.newAvenger;
+        let dupe = false;
+        for (let a of dummyData.avengers)
+        {
+            if (a.name == avenger)
+            {
+                dupe = true;
+            }
+        }
+        if (!dupe)
+        {
+            dummyData.avengers.push({name: avenger})
+        }
         res.json(dummyData);
-    }
+    //}
     //console.log(dummyData);
     });
 

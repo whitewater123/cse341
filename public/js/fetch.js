@@ -5,13 +5,17 @@ window.addEventListener("load", () => {
     .then(res => res.json())
     .then(data => {
         // Do something with the response data
-        document.getElementById("get").innerHTML = data.stringify;
+        for (let a of data.avengers)
+        {
+            document.getElementById("get").innerHTML += '<li>' + a.name + '</li>';
+        }
+        //document.getElementById("get").innerHTML = JSON.stringify(data);
         console.log(data)
     })
     .catch(console.error)});
-​
-// POST Request
-const newData = { key: 'value' } // Get this from your input
+    function postRequest() {
+    // POST Request
+const newData = { newAvenger: document.getElementById("insert").value } // Get this from your input
 fetch('/pr10/insert', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -20,7 +24,14 @@ fetch('/pr10/insert', {
     .then(res => res.json())
     .then(data => {
         // Do something with the response data
-        data.push(document.getElementById("insert").innerHTML);
+        //data.push(document.getElementById("insert").value);
+        document.getElementById("get").innerHTML = '';
+        for (let a of data.avengers)
+        {
+            document.getElementById("get").innerHTML += '<li>' + a.name + '</li>';
+        }
+        document.getElementById("insert").value = '';
         console.log(data)
     })
     .catch(console.error)
+}
