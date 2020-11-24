@@ -26,23 +26,25 @@
     <p></p>
   </div>
 </div>
-<div class="product-container">
+
   <ul id="get"></ul>
+  <h3>Add a New Hero</h3>
+  <p>(Enter an existing hero's name, an their power will update to the power you enter.)</p>
   <div class="form-control">
-    <label for="insert">insert new item</label>
+    <label for="insert">Name of Hero: </label>
     <input 
         class="insert"
         type="text" 
         name="insert" 
         id="insert">
+        <label for="power">Hero's Power: </label>
+    <input 
+        class="power"
+        type="text" 
+        name="power" 
+        id="power">
         <button class="btn" onclick="postRequest()" href="/pr10/fetchAll">insert</button>
 </div>
-  
-    
-</div>
-
-
-
 
 </body>
 </html>

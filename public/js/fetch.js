@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
         // Do something with the response data
         for (let a of data.avengers)
         {
-            document.getElementById("get").innerHTML += '<li>' + a.name + '</li>';
+            document.getElementById("get").innerHTML += '<li> Hero: ' + a.name + ', Power: ' + a.power + '</li>';
         }
         //document.getElementById("get").innerHTML = JSON.stringify(data);
         console.log(data)
@@ -15,7 +15,10 @@ window.addEventListener("load", () => {
     .catch(console.error)});
     function postRequest() {
     // POST Request
-const newData = { newAvenger: document.getElementById("insert").value } // Get this from your input
+const newData = { 
+    newAvenger: document.getElementById("insert").value
+    , newPower: document.getElementById("power").value
+ } // Get this from your input
 fetch('/pr10/insert', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,9 +31,10 @@ fetch('/pr10/insert', {
         document.getElementById("get").innerHTML = '';
         for (let a of data.avengers)
         {
-            document.getElementById("get").innerHTML += '<li>' + a.name + '</li>';
+            document.getElementById("get").innerHTML += '<li> Hero: ' + a.name + ', Power: ' + a.power + '</li>';
         }
         document.getElementById("insert").value = '';
+        document.getElementById("power").value = '';
         console.log(data)
     })
     .catch(console.error)

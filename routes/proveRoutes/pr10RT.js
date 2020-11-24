@@ -22,17 +22,23 @@ const express = require('express');
      ************************************************/
     //function insertHero(dummyData) {
         const avenger = req.body.newAvenger;
+        const power = req.body.newPower;
         let dupe = false;
         for (let a of dummyData.avengers)
         {
             if (a.name == avenger)
             {
+                if (a.power != power)
+                {
+                    a.power = power;
+                }
                 dupe = true;
             }
         }
         if (!dupe)
         {
-            dummyData.avengers.push({name: avenger})
+            dummyData.avengers.push({name: avenger,
+            power: power})
         }
         res.json(dummyData);
     //}
