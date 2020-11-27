@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/fetch.js"></script>
+  
+  
+  <style>
+    .product-container {
+      margin: auto;
+      width: 60%;
+    }
+
+    .card {
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+<% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <p></p>
+  </div>
+</div>
+<h2>Heroes</h2>
+  <ul id="get"></ul>
+  <h3>Add a New Hero</h3>
+  <p>(Enter an existing hero's name, an their power will update to the power you enter.)</p>
+  <div class="form-control">
+    <label for="insert">Name of Hero: </label>
+    <input 
+        class="insert"
+        type="text" 
+        name="insert" 
+        id="insert">
+        <label for="power">Hero's Power: </label>
+    <input 
+        class="power"
+        type="text" 
+        name="power" 
+        id="power">
+        <button class="btn" onclick="postRequest()" href="/pr10/fetchAll">insert</button>
+</div>
+
+</body>
+</html>

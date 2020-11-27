@@ -27,6 +27,7 @@ const pr03Routes = require('./routes/proveRoutes/pr03RT');
 const pr08Routes = require('./routes/proveRoutes/pr08RT');
 const pr09Routes = require('./routes/proveRoutes/pr09RT');
 const pr10Routes = require('./routes/proveRoutes/pr10RT');
+const pr11Routes = require('./routes/proveRoutes/pr11RT');
 
 //team activities
 const ta01Routes = require('./routes/ta01');
@@ -136,6 +137,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .use('/pr08', pr08Routes)
    .use('/pr09', pr09Routes)
    .use('/pr10', pr10Routes)
+   .use('/pr11', pr11Routes)
    .use('/w03', classRoutes)
    .use('/admin', adminRoutes)
    .use('/', authRoutes)
@@ -180,7 +182,11 @@ app.use(express.static(path.join(__dirname, 'public')))
         .save();
       }
     })*/
-    app.listen(PORT);
+    const server = app.listen(PORT);
+    const io = require('socket.io')(server);
+    io.on('connection', socket => {
+      console.log('Client connected!!')
+    });
   })
   .catch(err => {
     console.log(err);
