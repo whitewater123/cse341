@@ -1,7 +1,9 @@
-console.log("fetch script loaded!!!")
+console.log("fetch pr11 script loaded!!!")
+const socket = io();
+
 // GET Request
 window.addEventListener("load", () => {
-    fetch('/pr10/fetchAll')
+    fetch('/pr11/fetchAll')
     .then(res => res.json())
     .then(data => {
         // Do something with the response data
@@ -19,7 +21,7 @@ const newData = {
     newAvenger: document.getElementById("insert").value
     , newPower: document.getElementById("power").value
  } // Get this from your input
-fetch('/pr10/insert', {
+fetch('/pr11/insert', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newData)
@@ -33,6 +35,7 @@ fetch('/pr10/insert', {
         {
             document.getElementById("get").innerHTML += '<li> Hero: ' + a.name + ', Power: ' + a.power + '</li>';
         }
+        socket.emit("broadcast", data);
         document.getElementById("insert").value = '';
         document.getElementById("power").value = '';
         console.log(data)

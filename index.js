@@ -186,6 +186,10 @@ app.use(express.static(path.join(__dirname, 'public')))
     const io = require('socket.io')(server);
     io.on('connection', socket => {
       console.log('Client connected!!')
+      socket.on('broadcast', data => {
+        socket.broadcast.emit("broadcast", data);
+    });
+    
     });
   })
   .catch(err => {
